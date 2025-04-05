@@ -6,7 +6,7 @@ function TaskTable() {
   return (
     <div className="flex items-center p-7">
       {tasks.map((e, index) => (
-        <p key={index}>{e}</p>
+        <p key={index}>{e.title}</p>
       ))}
     </div>
   );

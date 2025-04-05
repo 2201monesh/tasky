@@ -4,10 +4,13 @@ export const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
+  const [filterText, setFilterText] = useState("");
 
   const value = {
     tasks,
     setTasks,
+    filterText,
+    setFilterText,
   };
 
   return (

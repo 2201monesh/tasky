@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from "react";
 
-function AddTask() {
-
-    const [open, setOpen] = useState(false);
-    const [task, setTask] = useState("");
+function AddTask({ handleTasks }) {
+  const [open, setOpen] = useState(false);
+  const [task, setTask] = useState("");
 
   return (
     <div className="relative">
-      <button onClick={() => setOpen((prev) => !prev)} className='flex items-center px-3.5 py-1 border border-[#27272A] rounded-lg text-sm cursor-pointer hover:bg-[#27272A]'>
+      <button
+        onClick={() => setOpen((prev) => !prev)}
+        className="flex items-center px-3.5 py-1 border border-[#27272A] rounded-lg text-sm cursor-pointer hover:bg-[#27272A]"
+      >
         Add Task
       </button>
 
@@ -37,9 +39,11 @@ function AddTask() {
               </button>
               <button
                 onClick={() => {
-                  console.log("Task Saved:", task);
-                  setTask("");
-                  setOpen(false);
+                  if (task.trim() !== "") {
+                    handleTasks(task);
+                    setTask("");
+                    setOpen(false);
+                  }
                 }}
                 className="px-4 py-1 bg-blue-500 text-white cursor-pointer rounded-md text-sm hover:bg-blue-600"
               >
@@ -50,8 +54,7 @@ function AddTask() {
         </div>
       )}
     </div>
-    
-  )
+  );
 }
 
 export default AddTask;

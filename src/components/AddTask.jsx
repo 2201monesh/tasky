@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
 
 function AddTask({ handleTasks }) {
   const [open, setOpen] = useState(false);
   const [task, setTask] = useState("");
+  const { tasks, setTasks } = useContext(GlobalContext);
 
   return (
     <div className="relative">
@@ -40,7 +42,7 @@ function AddTask({ handleTasks }) {
               <button
                 onClick={() => {
                   if (task.trim() !== "") {
-                    handleTasks(task);
+                    setTasks((prev) => [...prev, task]);
                     setTask("");
                     setOpen(false);
                   }

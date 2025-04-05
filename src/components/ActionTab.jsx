@@ -3,11 +3,7 @@ import StatusTab from "./StatusTab";
 import PriorityTab from "./PriorityTab";
 import AddTask from "./AddTask";
 
-function ActionTab({ handleFunction }) {
-  const handleTasks = (task) => {
-    handleFunction(task);
-  };
-
+function ActionTab() {
   return (
     <div className="flex items-center justify-between p-7">
       <div className="flex">
@@ -20,7 +16,7 @@ function ActionTab({ handleFunction }) {
         <PriorityTab />
       </div>
       <div>
-        <AddTask handleTasks={handleTasks} />
+        <AddTask />
       </div>
     </div>
   );
